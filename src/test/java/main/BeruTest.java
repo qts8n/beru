@@ -16,8 +16,6 @@ public class BeruTest {
 
     @BeforeMethod
     protected void testInit() {
-        Messenger messenger = new Messenger();
-        System.out.println(messenger.sayHello());
         String projectPath = System.getProperty("user.dir");
         System.setProperty("webdriver.gecko.driver", projectPath + GECKO_PATH);
         ffDriver = new FirefoxDriver();
