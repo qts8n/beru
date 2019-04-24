@@ -25,17 +25,12 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>home.Main</mainClass>
+                                    <mainClass>main.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.9</version>
             </plugin>
         </plugins>
     </build>
@@ -63,6 +58,13 @@
             <scope>compile</scope>
         </dependency>
         <!-- end::testng[] -->
+        <!-- tag::allure-testng[] -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+        <!-- end::allure-testng[] -->
     </dependencies>
 
 </project>
