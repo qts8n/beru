@@ -5,4 +5,9 @@
             <class name="main.AuthorizationTest" />
         </classes>
     </test>
+    <test name="City Select">
+        <classes>
+            <class name="main.CitySelectTest" />
+        </classes>
+    </test>
 </suite>

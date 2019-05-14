@@ -1,24 +1,21 @@
 package beru;
 
 import io.qameta.allure.Step;
+import main.BeruPage;
+import main.Config;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginFormPage {
+public class LoginFormPage extends BeruPage {
     private By loginTextInput = By.cssSelector("input#passp-field-login");
     private By formSubmitBtn = By.cssSelector("div.passp-sign-in-button > button.passp-form-button");
     private By passwdTextInput = By.cssSelector("input#passp-field-passwd");
 
-    private WebDriver instance;
-
-    private static final String YALOGIN = "efishtest";
-    private static final String YAPSSWD = "12qwasZX";
-
     public LoginFormPage(WebDriver driver) {
-        instance = driver;
+        super(driver);
     }
 
     @Step("Typing into text input")
@@ -30,12 +27,12 @@ public class LoginFormPage {
 
     @Step("Waiting to login field to appear to start typing login")
     private void typeIntoLogin() {
-        typeIntoTextInput(loginTextInput, YALOGIN);
+        typeIntoTextInput(loginTextInput, Config.YALOGIN);
     }
 
     @Step("Waiting to password field to appear to start typing password")
     private void typeIntoPasswd() {
-        typeIntoTextInput(passwdTextInput, YAPSSWD);
+        typeIntoTextInput(passwdTextInput, Config.YAPSSWD);
     }
 
     @Step("Submitting current form")
