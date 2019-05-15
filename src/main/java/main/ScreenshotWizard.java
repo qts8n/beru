@@ -6,7 +6,6 @@ import io.qameta.allure.AllureLifecycle;
 
 class ScreenshotWizard {
     private static final String MIME = "image/jpg";
-    private static final String FILENAME = "Screenshot";
 
     private String filename;
 

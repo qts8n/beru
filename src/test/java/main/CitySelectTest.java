@@ -13,7 +13,7 @@ public class CitySelectTest extends BeruTest {
         homePage.setCity(cityName);
         assertThat(homePage.getRegion()).isEqualToIgnoringCase(cityName);
         authorize(homePage);
-        homePage.openSettings();
+        homePage.openSettingsPage();
         SettingsPage settingsPage = new SettingsPage(ffDriver);
         assertThat(settingsPage.getSettingsCity()).isEqualToIgnoringCase(homePage.getRegion());
     }

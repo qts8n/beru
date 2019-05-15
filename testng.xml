@@ -10,4 +10,9 @@
             <class name="main.CitySelectTest" />
         </classes>
     </test>
+    <test name="Catalog Toothbrush Buy">
+        <classes>
+            <class name="main.CatalogTest" />
+        </classes>
+    </test>
 </suite>

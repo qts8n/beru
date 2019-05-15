@@ -13,8 +13,7 @@ public class Config {
     public static Object[][] cityNames() {
         return new Object[][] {
                 { "Хвалынск" },
-                { "Москва" },
-                { "Санкт-Петербург" }
+                { "Неизвестнобург" }
         };
     }
 }

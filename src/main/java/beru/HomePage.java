@@ -9,9 +9,10 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class HomePage extends BeruPage {
-    private static final int DEFAULT_WAIT_TIMEOUT = 10;
+    private static final int TIMEOUT_DEFAULT = 5;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -55,7 +56,7 @@ public class HomePage extends BeruPage {
         Actions actions = new Actions(instance);
         actions.moveToElement(instance.findElement(profileBtn)); // triggering hover
         actions.click().build().perform();
-        return (new WebDriverWait(instance, DEFAULT_WAIT_TIMEOUT))
+        return (new WebDriverWait(instance, TIMEOUT_DEFAULT))
                 .until(ExpectedConditions.presenceOfElementLocated(item));
     }
 
@@ -84,8 +85,31 @@ public class HomePage extends BeruPage {
     }
 
     @Step("Opening settings menu")
-    public void openSettings() {
-        WebElement appearedSettingsBtn = locateProfileMenuItem(settingsBtn);
-        appearedSettingsBtn.click();
+    public void openSettingsPage() {
+        locateProfileMenuItem(settingsBtn).click();
+    }
+
+    @Step("Opening catalog")
+    public void openCatalog() {
+        WebElement catalogOpener = (new WebDriverWait(instance, TIMEOUT_DEFAULT))
+                .until(ExpectedConditions.presenceOfElementLocated(catalogBtn));
+        Actions actions = new Actions(instance);
+        actions.moveToElement(catalogOpener).click().build().perform();
+    }
+
+    @Step("Opening catalog subsection")
+    public void openCatalogSubsection(String section, String subsection) {
+        WebElement categoryList = instance.findElement(catalogCategoryList);
+        WebElement sectionLink = categoryList.findElement(By.linkText(section));
+        Actions actions = new Actions(instance);
+        actions.moveToElement(sectionLink).perform();
+        WebElement subsectionLink = (new WebDriverWait(instance, TIMEOUT_DEFAULT))
+                .until(ExpectedConditions.presenceOfElementLocated(By.linkText(subsection)));
+        actions.moveToElement(subsectionLink).click().build().perform();
+    }
+
+    @Step("Opening cart page")
+    public void openCartPage() {
+        instance.findElement(cartBtn).click();
     }
 }
